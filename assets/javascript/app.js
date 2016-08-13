@@ -1,4 +1,4 @@
-
+/*
 $(document).ready(function (){
 
 
@@ -26,8 +26,8 @@ $('#submit').click(function reset() {
     })
 
 })
-
-
+*/
+var varWhatever="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt, velit vel sodales accumsan, nulla magna imperdiet nibh, ut convallis ligula nibh eget nibh. Duis sem est, volutpat at interdum eu, convallis in sapien. Praesent et elementum mauris. Nullam finibus nisi tellus, eleifend condimentum dui suscipit in. Vivamus non mattis quam, vel blandit diam. Praesent bibendum massa nec blandit porta. Curabitur in purus sit amet lectus consequat rhoncus. Praesent euismod diam ac mi vehicula tempor.";
 var settings = {
     "async": true,
     "crossDomain": true,
@@ -37,9 +37,7 @@ var settings = {
         "X-Watson-Authorization-Token": "Basic N2UwNDk0OGMtYWU5ZS00MDc5LThkOTktNmIxZjA0Y2FmZDY3OmVIalpXcjV0TlZXZQ==",
         "Content-Type": "application/json"
     },
-
-    "data": "{\"text\" : \"TEST FOR WATSON ANALYZE\"}",
-
+    "data": JSON.stringify({"text" :varWhatever}),
 }
 
 $.ajax(settings).done(function (response) {
