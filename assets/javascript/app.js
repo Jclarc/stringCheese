@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+/*
+$(document).ready(function (){
+>>>>>>> cf180d15f6a6246a80e027d9192f4a774eb2e422
 
 
 //when submit button is clicked
@@ -34,6 +39,7 @@ $('#submit').on("click", function () {
     }
 
 })
+<<<<<<< HEAD
 
 
 
@@ -47,6 +53,21 @@ $('#submit').on("click", function () {
 //         "X-Watson-Authorization-Token": "Basic N2UwNDk0OGMtYWU5ZS00MDc5LThkOTktNmIxZjA0Y2FmZDY3OmVIalpXcjV0TlZXZQ==",
 //         "Content-Type": "application/json"
 //     },
+=======
+*/
+var varWhatever="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt, velit vel sodales accumsan, nulla magna imperdiet nibh, ut convallis ligula nibh eget nibh. Duis sem est, volutpat at interdum eu, convallis in sapien. Praesent et elementum mauris. Nullam finibus nisi tellus, eleifend condimentum dui suscipit in. Vivamus non mattis quam, vel blandit diam. Praesent bibendum massa nec blandit porta. Curabitur in purus sit amet lectus consequat rhoncus. Praesent euismod diam ac mi vehicula tempor.";
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://watson-api-explorer.mybluemix.net/tone-analyzer/api/v3/tone?version=2016-05-19",
+    "method": "POST",
+    "headers": {
+        "X-Watson-Authorization-Token": "Basic N2UwNDk0OGMtYWU5ZS00MDc5LThkOTktNmIxZjA0Y2FmZDY3OmVIalpXcjV0TlZXZQ==",
+        "Content-Type": "application/json"
+    },
+    "data": JSON.stringify({"text" :varWhatever}),
+}
+>>>>>>> cf180d15f6a6246a80e027d9192f4a774eb2e422
 
 //     "data": "{\"text\" : \"TEST FOR WATSON ANALYZE\"}",
 
