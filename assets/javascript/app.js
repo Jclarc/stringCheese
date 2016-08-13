@@ -70,6 +70,7 @@ $.ajax(settings).done(function (response) {
         "agreeableness":response.document_tone.tone_categories[2].tones[3].score,
         "emotionalRange":response.document_tone.tone_categories[2].tones[4].score,
     }
+    
     var anger= Math.round(tones.anger*100);
     var discust= Math.round(tones.discust*100);
     var fear= Math.round(tones.fear*100);
@@ -103,7 +104,7 @@ $.ajax(settings).done(function (response) {
     console.log("Agreeableness Score: "+agreeableness+"%");
     console.log("Emotional Range Score: "+emotionalRange+"%");
 
-})
 
-};
+
+});
 
