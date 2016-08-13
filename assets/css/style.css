@@ -46,7 +46,8 @@ hr {
     margin-bottom: 0px;
 }
 
-#name-box {
+#name-box,
+.game-area {
     text-align: center;
     margin-bottom: 50px;
 
