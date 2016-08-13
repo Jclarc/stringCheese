@@ -37,7 +37,8 @@ $('#submit').on("click", function () {
 
 
 */
-    var Whatever="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt, velit vel sodales accumsan, nulla magna imperdiet nibh, ut convallis ligula nibh eget nibh. Duis sem est, volutpat at interdum eu, convallis in sapien. Praesent et elementum mauris. Nullam finibus nisi tellus, eleifend condimentum dui suscipit in. Vivamus non mattis quam, vel blandit diam. Praesent bibendum massa nec blandit porta. Curabitur in purus sit amet lectus consequat rhoncus. Praesent euismod diam ac mi vehicula tempor.";
+    var userInput="Lorem ipsum dolor sit amet, consectetur adipiscing elit Nunc tincidunt, velit vel sodales accumsan, nulla magna imperdiet nibh, ut convallis ligula nibh eget nibh Duis sem est, volutpat at interdum eu, convallis in sapien. Praesent et elementum mauris. Nullam finibus nisi tellus, eleifend condimentum dui suscipit in. Vivamus non mattis quam, vel blandit diam. Praesent bibendum massa nec blandit porta. Curabitur in purus sit amet lectus consequat rhoncus. Praesent euismod diam ac mi vehicula tempor.";
+
 
 var settings = {
     "async": true,
@@ -48,7 +49,7 @@ var settings = {
         "X-Watson-Authorization-Token": "Basic N2UwNDk0OGMtYWU5ZS00MDc5LThkOTktNmIxZjA0Y2FmZDY3OmVIalpXcjV0TlZXZQ==",
         "Content-Type": "application/json"
     },
-    "data": JSON.stringify({"text" :Whatever}),
+    "data": JSON.stringify({"text" :userInput}),
 };
 
 $.ajax(settings).done(function (response) {
@@ -70,7 +71,7 @@ $.ajax(settings).done(function (response) {
         "agreeableness":response.document_tone.tone_categories[2].tones[3].score,
         "emotionalRange":response.document_tone.tone_categories[2].tones[4].score,
     }
-    
+
     var anger= Math.round(tones.anger*100);
     var discust= Math.round(tones.discust*100);
     var fear= Math.round(tones.fear*100);
@@ -86,8 +87,8 @@ $.ajax(settings).done(function (response) {
     var extraversion=Math.round(tones.extraversion*100);
     var agreeableness=Math.round(tones.agreeableness*100);
     var emotionalRange=Math.round(tones.emotionalRange*100);
-
-
+    console.log(response);
+    console.log(response.sentences_tone[0].text);
     console.log("Anger Score: "+anger+"%");
     console.log("Discust Score: "+discust+"%");
     console.log("Fear Score: "+fear+"%");
