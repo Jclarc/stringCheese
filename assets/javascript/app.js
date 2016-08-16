@@ -63,7 +63,7 @@ $.ajax(settings).done(function (response) {
 
     var tones = {
         "anger": response.document_tone.tone_categories[0].tones[0].score,
-        "discust": response.document_tone.tone_categories[0].tones[1].score,
+        "disgust": response.document_tone.tone_categories[0].tones[1].score,
         "fear": response.document_tone.tone_categories[0].tones[2].score,
         "joy": response.document_tone.tone_categories[0].tones[3].score,
         "sadness": response.document_tone.tone_categories[0].tones[4].score,
@@ -80,7 +80,7 @@ $.ajax(settings).done(function (response) {
     }
 
     var anger = Math.round(tones.anger * 100);
-    var discust = Math.round(tones.discust * 100);
+    var disgust = Math.round(tones.disgust * 100);
     var fear = Math.round(tones.fear * 100);
     var joy = Math.round(tones.joy * 100);
     var sadness = Math.round(tones.fear * 100);
@@ -97,7 +97,7 @@ $.ajax(settings).done(function (response) {
     console.log(response);
     console.log(response.sentences_tone[0].text);
     console.log("Anger Score: " + anger + "%");
-    console.log("Discust Score: " + discust + "%");
+    console.log("Disgust Score: " + disgust + "%");
     console.log("Fear Score: " + fear + "%");
     console.log("Joy Score: " + joy + "%");
     console.log("Sadness Score: " + sadness + "%");
