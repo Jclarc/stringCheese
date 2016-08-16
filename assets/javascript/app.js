@@ -63,11 +63,26 @@ window.onload=function(){
                 //troubles
                 console.log(name);
                 //make a game area div for rest of session
-                $(".game-area").css("text-align", "center", "width", "500px").html("<form class='arena'><textarea class='form-control'id='userInput' rows='3' maxlength='160' placeholder='Go for the gold Frodo Douchebaggins.'></textarea><input class='btn btn-default' type='submit' value='Submit' id='submit2'</form>");
+                $(".game-area").css("text-align", "center", "width", "500px").html("<form class='arena'><textarea class='form-control'id='userInput' rows='3' maxlength='160' placeholder='Go for the gold Frodo Douchebaggins.'></textarea><input class='btn btn-default' type='submit' value='Submit' id='submit2'></form>");
                  $(".scores").show(".scores");
                   $(".game-area").prepend("Your writing prompt is: " + prompts[0]);
 
-    }
+                            $('#submit2').on('click', function(e){ 
+                                e.preventDefault();
+
+                            userInput = JSON.stringify($('.arena').val());
+                            console.log(userInput);
+//console.log(response);
+// console.log(response.sentences_tone);
+                             console.log("Anger Score: " + anger + "%");
+                             console.log("Disgust Score: " + disgust + "%");
+                            console.log("Fear Score: " + fear + "%");
+                            console.log("Joy Score: " + joy + "%");
+                            console.log("Sadness Score: " + sadness + "%");
+
+    
+});
+              }
             
             else {
                 $(".game-area").html("Type your name, dipshit.");
@@ -77,22 +92,12 @@ window.onload=function(){
 
 
 
-$('#submit2').on('click', function(){ /*---------------------------------START OF USERINPUT SUBMIT BUTTON ON CLICK FUNC------------------------*/
 
-var userInput= JSON.stringify($('#userInput').val());
-console.log(userInput);
-//console.log(response);
-// console.log(response.sentences_tone);
-    console.log("Anger Score: " + anger + "%");
-    console.log("Disgust Score: " + disgust + "%");
-    console.log("Fear Score: " + fear + "%");
-    console.log("Joy Score: " + joy + "%");
-    console.log("Sadness Score: " + sadness + "%");
 
 });/*---------------------------------END OF USERINPUT SUBMIT BUTTON ON CLICK FUNC------------------------*/
 
 
 }) /*--------------------------------------------END OF SECOND BUTTON ON CLICK ------------------------------*/
 
-}); /*------------------------------------END OF DOC READY FUNCTION---------------------------------*/
+; /*------------------------------------END OF DOC READY FUNCTION---------------------------------*/
 
