@@ -4,6 +4,27 @@ $(document).ready(function (){
 
         $(".scores").hide(".scores");
         var name = "";
+        prompts = ["Anger", "Disgust", "Fear", "Joy", "Sadness"];
+
+window.onload=function(){ 
+
+//Rocky music on startup
+  audioElement = document.createElement('audio');
+   
+      audioElement.setAttribute('src', './assets/images/Rocky_Theme_Song.mp3');
+                audioElement.play();
+    };
+    
+
+
+
+
+
+
+
+
+
+
 
         //when submit button is clicked
 
@@ -11,6 +32,7 @@ $(document).ready(function (){
             e.preventDefault();
             name = $('#name-box').val().trim();
              if (name != ""){
+                audioElement.pause();
                 $(".address-bar").hide('.address-bar');
                 $(".player-form").hide('.player-form');
                 //make a variable for players name from name input box
@@ -19,7 +41,10 @@ $(document).ready(function (){
                 //make a game area div for rest of session
                 $(".game-area").css("text-align", "center", "width", "500px").html("<form class='arena'><textarea class='form-control'id='userInput' rows='3' maxlength='160' placeholder='Go for the gold Frodo Douchebaggins.'></textarea><input class='btn btn-default' type='submit' value='Submit' id='submit2'</form>");
                  $(".scores").show(".scores");
-            }
+                  $(".game-area").prepend("Your writing prompt is: " + prompts[0]);
+
+    }
+            
             else {
                 $(".game-area").html("Type your name, dipshit.");
             }
