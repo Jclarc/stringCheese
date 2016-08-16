@@ -1,7 +1,7 @@
 $(document).ready(function (){
 
 $(".scores").hide(".scores");
-name = ""
+name = "";
 
 //when submit button is clicked
 
@@ -94,6 +94,7 @@ $.ajax(settings).done(function (response) {
     var extraversion = Math.round(tones.extraversion * 100);
     var agreeableness = Math.round(tones.agreeableness * 100);
     var emotionalRange = Math.round(tones.emotionalRange * 100);
+
     console.log(response);
     console.log(response.sentences_tone[0].text);
     console.log("Anger Score: " + anger + "%");
@@ -113,3 +114,7 @@ $.ajax(settings).done(function (response) {
     console.log("Emotional Range Score: " + emotionalRange + "%");
 
 });
+//Just commenting out everything for now, so we can look it over and decide what to keep or toss without potentially causing problems//
+//** $('#submit').click(function(c) {
+//**    c.
+//** }
