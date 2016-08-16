@@ -1,4 +1,21 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+$(document).ready(function (){
+
+$(".scores").hide(".scores");
+name = ""
+
+//when submit button is clicked
+
+$('#submit').on("click", function (e){
+    e.preventDefault();
+
+     name = $('#name-box').val().trim();
+=======
+>>>>>>> 2c68539f71b7379f08371a59cf9389d56e944680
+=======
 var audioElement = document.createElement('audio');
+>>>>>>> 40c5f9bacfa51a3d8a5bc758278f9300f2b00d7d
 
 $(document).ready(function (){
 
@@ -81,14 +98,59 @@ $('#submit2').on('click', function(){ /*---------------------------------START O
 
 var userInput= JSON.stringify($('#userInput').val());
 console.log(userInput);
+<<<<<<< HEAD
+
+
+<<<<<<< HEAD
+    var anger = Math.round(tones.anger * 100);
+    var discust = Math.round(tones.discust * 100);
+    var fear = Math.round(tones.fear * 100);
+    var joy = Math.round(tones.joy * 100);
+    var sadness = Math.round(tones.fear * 100);
+
+    var analytical = Math.round(tones.analytical * 100);
+    var confident = Math.round(tones.confident * 100);
+    var tenative = Math.round(tones.tenative * 100);
+
+    var openness = Math.round(tones.openness * 100);
+    var conscientiousness = Math.round(tones.conscientiousness * 100);
+    var extraversion = Math.round(tones.extraversion * 100);
+    var agreeableness = Math.round(tones.agreeableness * 100);
+    var emotionalRange = Math.round(tones.emotionalRange * 100);
+
+    console.log(response);
+    console.log(response.sentences_tone[0].text);
+=======
+    //console.log(response);
+   // console.log(response.sentences_tone);
+>>>>>>> 2c68539f71b7379f08371a59cf9389d56e944680
+=======
 //console.log(response);
 // console.log(response.sentences_tone);
+>>>>>>> 40c5f9bacfa51a3d8a5bc758278f9300f2b00d7d
     console.log("Anger Score: " + anger + "%");
     console.log("Disgust Score: " + disgust + "%");
     console.log("Fear Score: " + fear + "%");
     console.log("Joy Score: " + joy + "%");
     console.log("Sadness Score: " + sadness + "%");
 
+<<<<<<< HEAD
+    console.log("Analytical Score: " + analytical + "%");
+    console.log("Confidence Score: " + confident + "%");
+    console.log("Tenative Score: " + tenative + "%");
+
+    console.log("Openness Score: " + openness + "%");
+    console.log("Conscientiousness Score: " + conscientiousness + "%");
+    console.log("Extraversion Score: " + extraversion + "%");
+    console.log("Agreeableness Score: " + agreeableness + "%");
+    console.log("Emotional Range Score: " + emotionalRange + "%");
+
+<<<<<<< HEAD
+});
+
+=======
+=======
+>>>>>>> 40c5f9bacfa51a3d8a5bc758278f9300f2b00d7d
 });/*---------------------------------END OF USERINPUT SUBMIT BUTTON ON CLICK FUNC------------------------*/
 
 
@@ -96,3 +158,4 @@ console.log(userInput);
 
 }); /*------------------------------------END OF DOC READY FUNCTION---------------------------------*/
 
+>>>>>>> 2c68539f71b7379f08371a59cf9389d56e944680
