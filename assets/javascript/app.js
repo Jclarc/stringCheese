@@ -1,6 +1,6 @@
 
 $(document).ready(function (){
-
+    var userInput="";
     // Watson api information passing userInput to data.
     var settings = {
         "async": true,
