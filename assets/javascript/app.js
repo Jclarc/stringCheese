@@ -1,52 +1,37 @@
+
 $(document).ready(function (){
 
-$(".scores").hide(".scores");
-name = ""
 
-//when submit button is clicked
+        $(".scores").hide(".scores");
+        var name = "";
 
-$('#submit').on("click", function (e){
-    e.preventDefault();
+        //when submit button is clicked
 
-     name = $('#name-box').val().trim();
+        $('#submit').on("click", function (e){ /*------------------------------------START OF CLICK FUNCTION ------------------------------------*/
+            e.preventDefault();
+            name = $('#name-box').val().trim();
+             if (name != ""){
+                $(".address-bar").hide('.address-bar');
+                $(".player-form").hide('.player-form');
+                //make a variable for players name from name input box
+                //troubles
+                console.log(name);
+                //make a game area div for rest of session
+                $(".game-area").css("text-align", "center", "width", "500px").html("<form class='arena'><textarea class='form-control'id='userInput' rows='3' maxlength='160' placeholder='Go for the gold Frodo Douchebaggins.'></textarea><input class='btn btn-default' type='submit' value='Submit' id='submit2'</form>");
+                 $(".scores").show(".scores");
+            }
+            else {
+                $(".game-area").html("Type your name, dipshit.");
+            }
 
-
-     if (name != ""){
-
-
-        $(".address-bar").hide('.address-bar');
-        $(".player-form").hide('.player-form');
-
-        //make a variable for players name from name input box
-
-    
-
-        //troubles
-        console.log($(name).val());
-
-
-//make a game area div for rest of session
+}); /*----------------------------------------------------------------END OF CLICK FUNCTION ---------------------------------------------------------------------*/
 
 
-
-        $(".game-area").css("text-align", "center",
-    "width", "500px").html("<form class='arena'><textarea class='form-control' rows='3' maxlength='160' placeholder='Go for the gold Frodo Douchebaggins.'></textarea><input class='btn btn-default' type='submit' value='Submit' id='submit2'</form>");
-        $(".scores").show(".scores");
-
-    }
-
-    else {
-
-        $(".game-area").html("Type your name, dipshit.");
-    }
-
-})
-
-})
-
-    var userInput="Lorem ipsum dolor sit amet, consectetur adipiscing elit Nunc tincidunt, velit vel sodales accumsan, nulla magna imperdiet nibh, ut convallis ligula nibh eget nibh Duis sem est, volutpat at interdum eu, convallis in sapien. Praesent et elementum mauris. Nullam finibus nisi tellus, eleifend condimentum dui suscipit in. Vivamus non mattis quam, vel blandit diam. Praesent bibendum massa nec blandit porta. Curabitur in purus sit amet lectus consequat rhoncus. Praesent euismod diam ac mi vehicula tempor.";
+$('#submit2').on('click', function(){
 
 
+var userInput= JSON.stringify($('#userInput').val());
+console.log(userInput);
 var settings = {
     "async": true,
     "crossDomain": true,
@@ -77,7 +62,7 @@ $.ajax(settings).done(function (response) {
         "extraversion": response.document_tone.tone_categories[2].tones[2].score,
         "agreeableness": response.document_tone.tone_categories[2].tones[3].score,
         "emotionalRange": response.document_tone.tone_categories[2].tones[4].score,
-    }
+    };
 
     var anger = Math.round(tones.anger * 100);
     var disgust = Math.round(tones.disgust * 100);
@@ -95,7 +80,7 @@ $.ajax(settings).done(function (response) {
     var agreeableness = Math.round(tones.agreeableness * 100);
     var emotionalRange = Math.round(tones.emotionalRange * 100);
     console.log(response);
-    console.log(response.sentences_tone[0].text);
+    console.log(response.sentences_tone);
     console.log("Anger Score: " + anger + "%");
     console.log("Disgust Score: " + disgust + "%");
     console.log("Fear Score: " + fear + "%");
@@ -113,3 +98,9 @@ $.ajax(settings).done(function (response) {
     console.log("Emotional Range Score: " + emotionalRange + "%");
 
 });
+
+
+}) /*--------------------------------------------END OF SECOND BUTTON ON CLICK ------------------------------*/
+
+}); /*------------------------------------END OF DOC READY FUNCTION---------------------------------*/
+
