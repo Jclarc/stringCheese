@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
 
     <title>Doucheinator 5000</title>
 
@@ -74,7 +75,17 @@
 
 
 
-
+<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyA4h2hleSZ5_-ydKxZ-w-_G22mr4JaE3Is",
+        authDomain: "string-cheese.firebaseapp.com",
+        databaseURL: "https://string-cheese.firebaseio.com",
+        storageBucket: "string-cheese.appspot.com",
+    };
+    firebase.initializeApp(config);
+</script>
 <script src="assets/javascript/app.js"></script>
 </body>
 
