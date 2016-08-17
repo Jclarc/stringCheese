@@ -1,5 +1,10 @@
 
 var audioElement = document.createElement('audio');
+var anger="";
+var disgust="";
+var fear="";
+var joy="";
+var sadness="";
 
 $(document).ready(function () {
 
@@ -30,19 +35,19 @@ $(document).ready(function () {
 
         };
         //sets up usable variables for each tone element already formated to percentages
-        var anger = Math.round(tones.anger * 100);
-        var disgust = Math.round(tones.disgust * 100);
-        var fear = Math.round(tones.fear * 100);
-        var joy = Math.round(tones.joy * 100);
-        var sadness = Math.round(tones.fear * 100);
-
+         anger = Math.round(tones.anger * 100);
+         disgust = Math.round(tones.disgust * 100);
+         fear = Math.round(tones.fear * 100);
+         joy = Math.round(tones.joy * 100);
+         sadness = Math.round(tones.fear * 100);
+    });
         /*----------------------------------------------------------------------------------End Watson Ajax call---------------------*/
 
 
         $(".scores").hide(".scores");
         var name = "";
         var prompts = ["Anger", "Disgust", "Fear", "Joy", "Sadness"];
-var score = 0
+        var score = 0
 
         window.onload = function () {
 //Rocky music on startup
@@ -63,32 +68,7 @@ var score = 0
                 console.log(name);
                 //make a game area div for rest of session
                 $(".game-area").css("text-align", "center", "width", "500px").html("<form class='arena'><textarea class='form-control'id='userInput' rows='3' maxlength='160' placeholder='Go for the gold Frodo Douchebaggins.'></textarea><input class='btn btn-default' type='submit' value='Submit' id='submit2'></form>");
-<<<<<<< HEAD
-                 $(".scores").show(".scores");
-                  $(".game-area").prepend("Your writing prompt is: " + prompts[0]);
 
-                            $('#submit2').on('click', function(e){ 
-                                e.preventDefault();
-
-                            userInput = JSON.stringify($('#userInput').val());
-                            console.log(userInput);
-//console.log(response);
-// console.log(response.sentences_tone);
-                             console.log("Anger Score: " + anger + "%");
-                             console.log("Disgust Score: " + disgust + "%");
-                            console.log("Fear Score: " + fear + "%");
-                            console.log("Joy Score: " + joy + "%");
-                            console.log("Sadness Score: " + sadness + "%");
-
-                            score = anger
-
-                            drawChart ();
-
-    
-});
-              }
-            
-=======
                 $(".scores").show(".scores");
                 $(".game-area").prepend("Your writing prompt is: " + prompts[0]);
 
@@ -97,24 +77,39 @@ var score = 0
 
                     userInput = JSON.stringify($('#userInput').val());
                     console.log(userInput);
-                    console.log(response);
                     console.log("Anger Score: " + anger + "%");
                     console.log("Disgust Score: " + disgust + "%");
                     console.log("Fear Score: " + fear + "%");
                     console.log("Joy Score: " + joy + "%");
                     console.log("Sadness Score: " + sadness + "%");
-                });
-            }
 
->>>>>>> d76a191e6ab12ab6cdfd11c8f85f5813473ad30b
-            else {
+                    $('#r1').append(userInput);
+                    $('#r1').append("<br>");
+                    $('#r1').append("Anger Score: " + anger + "%");
+                    $('#r1').append("<br>");
+                    $('#r1').append("Disgust Score: " + disgust + "%");
+                    $('#r1').append("<br>");
+                    $('#r1').append("Fear Score: " + fear + "%");
+                    $('#r1').append("<br>");
+                    $('#r1').append("Joy Score: " + joy + "%");
+                    $('#r1').append("<br>");
+                    $('#r1').append("Sadness Score: " + sadness + "%");
+
+                    score = anger
+
+                    drawChart();
+
+
+                });
+
+            } else {
                 $(".game-area").html("Type your name, dipshit.");
             }
 
         });
         /*----------------------------------------------------------------END OF CLICK FUNCTION ---------------------------------------------------------------------*/
 
-// guage code
+// gauge code
 
    
       google.charts.load('current', {'packages':['gauge']});
@@ -140,11 +135,6 @@ var score = 0
 
 
 
-}
-})
+      }
 
-<<<<<<< HEAD
-=======
-    })
->>>>>>> d76a191e6ab12ab6cdfd11c8f85f5813473ad30b
 })/*---------------------------------END OF USERINPUT SUBMIT BUTTON ON CLICK FUNC------------------------*/
