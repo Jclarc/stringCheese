@@ -94,4 +94,4 @@ window.onload=function(){
 
 
 
-});/*---------------------------------END OF USERINPUT SUBMIT BUTTON ON CLICK FUNC------------------------*/
+/*---------------------------------END OF USERINPUT SUBMIT BUTTON ON CLICK FUNC------------------------*/
