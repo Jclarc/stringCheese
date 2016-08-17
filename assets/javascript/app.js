@@ -1,3 +1,4 @@
+
 var audioElement = document.createElement('audio');
 
 $(document).ready(function (){
@@ -41,7 +42,7 @@ $(document).ready(function (){
         $(".scores").hide(".scores");
         var name = "";
         var prompts = ["Anger", "Disgust", "Fear", "Joy", "Sadness"];
-
+var score = 0
 
 
 window.onload=function(){
@@ -70,7 +71,7 @@ window.onload=function(){
                             $('#submit2').on('click', function(e){ 
                                 e.preventDefault();
 
-                            userInput = JSON.stringify($('.arena').val());
+                            userInput = JSON.stringify($('#userInput').val());
                             console.log(userInput);
 //console.log(response);
 // console.log(response.sentences_tone);
@@ -79,6 +80,10 @@ window.onload=function(){
                             console.log("Fear Score: " + fear + "%");
                             console.log("Joy Score: " + joy + "%");
                             console.log("Sadness Score: " + sadness + "%");
+
+                            score = anger
+
+                            drawChart ();
 
     
 });
@@ -93,5 +98,33 @@ window.onload=function(){
 
 
 
+// guage code
 
-});/*---------------------------------END OF USERINPUT SUBMIT BUTTON ON CLICK FUNC------------------------*/
+   
+      google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['Douche-o-meter', score],
+        ]);
+
+        var options = {
+          width: 400, height: 200,
+          redFrom: 90, redTo: 100,
+          yellowFrom:75, yellowTo: 90,
+          minorTicks: 5
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+
+
+
+
+}
+})
+
+})/*---------------------------------END OF USERINPUT SUBMIT BUTTON ON CLICK FUNC------------------------*/
