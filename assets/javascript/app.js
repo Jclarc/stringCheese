@@ -96,8 +96,29 @@ var score = 0
                     e.preventDefault();
 
                     userInput = JSON.stringify($('#userInput').val());
-                    console.log(userInput);
+                    console.log(""+userInput+"");
+
+
+
+
+
+
+
+
+
                     console.log(response);
+                    $('#r1').append(userInput);
+                    $('#r1').append("<br>");
+                    $('#r1').append("Anger Score: " + anger + "%");
+                    $('#r1').append("<br>");
+                    $('#r1').append("Disgust Score: " + disgust + "%");
+                    $('#r1').append("<br>");
+                    $('#r1').append("Fear Score: " + fear + "%");
+                    $('#r1').append("<br>");
+                    $('#r1').append("Joy Score: " + joy + "%");
+                    $('#r1').append("<br>");
+                    $('#r1').append("Sadness Score: " + sadness + "%");
+
                     console.log("Anger Score: " + anger + "%");
                     console.log("Disgust Score: " + disgust + "%");
                     console.log("Fear Score: " + fear + "%");
