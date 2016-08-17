@@ -2,7 +2,7 @@ var audioElement = document.createElement('audio');
 
 $(document).ready(function () {
 
-    var userInput = "";
+    var userInput = " ";
     // Watson api information passing userInput to data.
     var settings = {
         "async": true,
@@ -86,7 +86,6 @@ $(document).ready(function () {
         });
         /*----------------------------------------------------------------END OF CLICK FUNCTION ---------------------------------------------------------------------*/
 
+
     })
-}) /*---------------------------------END OF USERINPUT SUBMIT BUTTON ON CLICK FUNC------------------------*/
-
-
+})/*---------------------------------END OF USERINPUT SUBMIT BUTTON ON CLICK FUNC------------------------*/
