@@ -38,6 +38,12 @@ hr {
     border-color: #999999;
 }
 
+#chart_div {
+    text-align: center;
+    margin-left: 40%;
+    
+}
+
 .brand,
 .address-bar,
 .scores {

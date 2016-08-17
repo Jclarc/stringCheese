@@ -1,4 +1,10 @@
+
 var audioElement = document.createElement('audio');
+var anger="";
+var disgust="";
+var fear="";
+var joy="";
+var sadness="";
 
 $(document).ready(function () {
 
@@ -29,19 +35,19 @@ $(document).ready(function () {
 
         };
         //sets up usable variables for each tone element already formated to percentages
-        var anger = Math.round(tones.anger * 100);
-        var disgust = Math.round(tones.disgust * 100);
-        var fear = Math.round(tones.fear * 100);
-        var joy = Math.round(tones.joy * 100);
-        var sadness = Math.round(tones.fear * 100);
-
+         anger = Math.round(tones.anger * 100);
+         disgust = Math.round(tones.disgust * 100);
+         fear = Math.round(tones.fear * 100);
+         joy = Math.round(tones.joy * 100);
+         sadness = Math.round(tones.fear * 100);
+    });
         /*----------------------------------------------------------------------------------End Watson Ajax call---------------------*/
 
 
         $(".scores").hide(".scores");
         var name = "";
         var prompts = ["Anger", "Disgust", "Fear", "Joy", "Sadness"];
-
+        var score = 0
 
         window.onload = function () {
 //Rocky music on startup
@@ -62,6 +68,7 @@ $(document).ready(function () {
                 console.log(name);
                 //make a game area div for rest of session
                 $(".game-area").css("text-align", "center", "width", "500px").html("<form class='arena'><textarea class='form-control'id='userInput' rows='3' maxlength='160' placeholder='Go for the gold Frodo Douchebaggins.'></textarea><input class='btn btn-default' type='submit' value='Submit' id='submit2'></form>");
+
                 $(".scores").show(".scores");
                 $(".game-area").prepend("Your writing prompt is: " + prompts[0]);
 
@@ -69,17 +76,13 @@ $(document).ready(function () {
                     e.preventDefault();
 
                     userInput = JSON.stringify($('#userInput').val());
-                    console.log(""+userInput+"");
+                    console.log(userInput);
+                    console.log("Anger Score: " + anger + "%");
+                    console.log("Disgust Score: " + disgust + "%");
+                    console.log("Fear Score: " + fear + "%");
+                    console.log("Joy Score: " + joy + "%");
+                    console.log("Sadness Score: " + sadness + "%");
 
-
-
-
-
-
-
-
-
-                    console.log(response);
                     $('#r1').append(userInput);
                     $('#r1').append("<br>");
                     $('#r1').append("Anger Score: " + anger + "%");
@@ -92,21 +95,46 @@ $(document).ready(function () {
                     $('#r1').append("<br>");
                     $('#r1').append("Sadness Score: " + sadness + "%");
 
-                    console.log("Anger Score: " + anger + "%");
-                    console.log("Disgust Score: " + disgust + "%");
-                    console.log("Fear Score: " + fear + "%");
-                    console.log("Joy Score: " + joy + "%");
-                    console.log("Sadness Score: " + sadness + "%");
-                });
-            }
+                    score = anger
 
-            else {
+                    drawChart();
+
+
+                });
+
+            } else {
                 $(".game-area").html("Type your name, dipshit.");
             }
 
         });
         /*----------------------------------------------------------------END OF CLICK FUNCTION ---------------------------------------------------------------------*/
 
+// gauge code
 
-    })
+   
+      google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['Douche-o-meter', score],
+        ]);
+
+        var options = {
+          width: 400, height: 200,
+          redFrom: 90, redTo: 100,
+          yellowFrom:75, yellowTo: 90,
+          minorTicks: 5
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+
+
+
+
+      }
+
 })/*---------------------------------END OF USERINPUT SUBMIT BUTTON ON CLICK FUNC------------------------*/
