@@ -1,11 +1,12 @@
 var audioElement = document.createElement('audio');
+$(".scores").hide(".scores");
+    $("#win").hide("#win");
+    $("#lose").hide("#lose");
 
 
 $(document).ready(function () {
 
-    $(".scores").hide(".scores");
-    $("#win").hide("#win");
-    $("#lose").hide("#lose");
+    
     var name = "";
     var score = 0
 
@@ -96,7 +97,8 @@ $(document).ready(function () {
 
                                 if (score > 400) {
 
-                                    $("#win").show("#win");
+                                    $("#win").show("#win")
+
 
 
                                 } else 
@@ -112,6 +114,12 @@ $(document).ready(function () {
             $(".game-area").html("Type your name, dipshit.");
         }
     });
+
+
+
+$(".reset").on("click", function(){
+    window.location.reload();
+})
     /*----------------------------------------------------------------END OF CLICK FUNCTION ---------------------------------------------------------------------*/
 // gauge code
     google.charts.load('current', {'packages': ['gauge']});
