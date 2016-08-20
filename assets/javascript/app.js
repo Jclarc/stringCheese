@@ -4,9 +4,11 @@ var audioElement = document.createElement('audio');
 $(document).ready(function () {
 
     $(".scores").hide(".scores");
+    $("#win").hide("#win");
+    $("#lose").hide("#lose");
     var name = "";
-    var prompts = ["Anger", "Disgust", "Fear", "Joy", "Sadness"];
     var score = 0
+
 
     window.onload = function () {
 //Rocky music on startup
@@ -27,7 +29,7 @@ $(document).ready(function () {
 
             var round=1;
             $(".scores").show(".scores");
-            $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
+            $(".game-area").prepend("GIVE ME YOUR WORST, DILLHOLE.");
             $('#submit2').on('click', function (e) {
                 e.preventDefault();
                 var userInput = $('#userInput').val();
@@ -48,68 +50,61 @@ $(document).ready(function () {
 
                     var tones = {//object
                         "anger": response.document_tone.tone_categories[0].tones[0].score,
-                        "disgust": response.document_tone.tone_categories[0].tones[1].score,
-                        "fear": response.document_tone.tone_categories[0].tones[2].score,
-                        "joy": response.document_tone.tone_categories[0].tones[3].score,
-                        "sadness": response.document_tone.tone_categories[0].tones[4].score,
+                       
                     };
                     //sets up usable variables for each tone element already formated to percentages
                     var anger = Math.round(tones.anger * 100);
-                    var disgust = Math.round(tones.disgust * 100);
-                    var fear = Math.round(tones.fear * 100);
-                    var joy = Math.round(tones.joy * 100);
-                    var sadness = Math.round(tones.fear * 100);
+                  
 
                         if (round == 1) {
                             $('#r1').append(userInput);
                             $('#r1').append("<br>");
                             $('#r1').append("Anger Score: " + anger + "%");
+                            
                             score = anger;
                         } else if (round == 2) {
                           //  $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
                             $('#r2').append(userInput);
                             $('#r2').append("<br>");
-                            $('#r2').append("Disgust Score: " + disgust + "%");
+                            $('#r2').append("Anger Score: " + anger + "%");
 
-                            score = disgust;
+                            score = score + anger;
                         } else if (round == 3) {
                            // $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
                             $('#r3').append(userInput);
                             $('#r3').append("<br>");
-                            $('#r3').append("Fear Score: " + fear + "%");
+                            $('#r3').append("Anger Score: " + anger + "%");
 
-                            score = fear;
+                            score = score + anger;
                         } else if (round == 4) {
                            // $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
                             $('#r4').append(userInput);
                             $('#r4').append("<br>");
-                            $('#r4').append("Joy Score: " + joy + "%");
-                            score = joy;
+                            $('#r4').append("Anger Score: " + anger + "%");
+                            score = score + anger;
                         } else if (round == 5) {
                           //  $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
                             $('#r5').append(userInput);
                             $('#r5').append("<br>");
-                            $('#r5').append("Sadness Score: " + sadness + "%");
+                            $('#r5').append("Anger Score: " + anger + "%");
 
-                            score = sadness;
-                        } else {
-                            alert("GAME OVER");
+                            score = score + anger;
+
+                            $(".game-area").hide(".game-area");
+                            $(".scores").empty();
+                            $(".scores").html("TOTAL SCORE: " + score);
+
+                                if (score > 400) {
+
+                                    $("#win").show("#win");
+
+
+                                } else 
+                                    $("#lose").show("#lose");
+                        
                         }
                         round++;
                         drawChart();
-                    /*
-                    $('#r1').append(userInput);
-                    $('#r1').append("<br>");
-                    $('#r1').append("Anger Score: " + anger + "%");
-                    $('#r1').append("<br>");
-                    $('#r1').append("Disgust Score: " + disgust + "%");
-                    $('#r1').append("<br>");
-                    $('#r1').append("Fear Score: " + fear + "%");
-                    $('#r1').append("<br>");
-                    $('#r1').append("Joy Score: " + joy + "%");
-                    $('#r1').append("<br>");
-                    $('#r1').append("Sadness Score: " + sadness + "%");
-                    */
                 });
             })/*----------------------------------------------------------------------------------End Watson Ajax call---------------------*/
 
@@ -129,10 +124,12 @@ $(document).ready(function () {
         ]);
 
         var options = {
+            min: 0, max: 500,
             width: 400, height: 200,
-            redFrom: 90, redTo: 100,
-            yellowFrom: 75, yellowTo: 90,
-            minorTicks: 5
+            redFrom: 400, redTo: 500,
+            yellowFrom: 250, yellowTo: 399,
+            greenFrom: 0, greenTo:249, 
+            minorTicks: 10
         };
 
         var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
