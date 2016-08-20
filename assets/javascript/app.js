@@ -26,7 +26,7 @@ $(document).ready(function () {
             $(".address-bar").hide('.address-bar');
             $(".player-form").hide('.player-form');
             $(".game-area").css("text-align",
-                "center", "width", "500px").html("<form class='arena'><textarea class='form-control'id='userInput' rows='3' maxlength='160' placeholder='Go for the gold Frodo Douchebaggins.'></textarea><input class='btn btn-default' type='submit' value='Submit' id='submit2'></form>");
+                "center", "width", "500px").html("<div class = 'italics'>Directions: You have 5 chances to get a collective score above 400 to win this fucking thing. So type something hilariously terrible and hit submit.</div><form class='arena'><textarea class='form-control'id='userInput' rows='3' maxlength='160' placeholder='Go for the gold Frodo Douchebaggins.'></textarea><input class='btn btn-default' type='submit' value='Submit' id='submit2'></form>");
 
             var round=1;
             $(".scores").show(".scores");
@@ -97,14 +97,17 @@ $(document).ready(function () {
 
                                 if (score > 400) {
 
-                                    $("#win").show("#win")
+                                    $("#win").show("#win").append('<input class="btn btn-default reset" type="reset"  value="Reset"><br><Br></input><img src="./assets/images/winning.jpg"</img>')
 
 
 
                                 } else 
-                                    $("#lose").show("#lose");
-                        
+                                    $("#lose").show("#lose").append('<input class="btn btn-default reset" type="reset"  value="Reset"><br><Br></input><img src="./assets/images/losing.png"</img>')
                         }
+
+                        $(".reset").on("click", function(){
+                            window.location.reload();
+})
                         round++;
                         drawChart();
                 });
@@ -117,9 +120,7 @@ $(document).ready(function () {
 
 
 
-$(".reset").on("click", function(){
-    window.location.reload();
-})
+
     /*----------------------------------------------------------------END OF CLICK FUNCTION ---------------------------------------------------------------------*/
 // gauge code
     google.charts.load('current', {'packages': ['gauge']});
