@@ -5,7 +5,6 @@ $(document).ready(function () {
 
     $(".scores").hide(".scores");
     var name = "";
-    var prompts = ["Anger", "Disgust", "Fear", "Joy", "Sadness"];
     var score = 0
 
     window.onload = function () {
@@ -27,7 +26,7 @@ $(document).ready(function () {
 
             var round=1;
             $(".scores").show(".scores");
-            $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
+            $(".game-area").prepend("Give me your worst Dillhole");
             $('#submit2').on('click', function (e) {
                 e.preventDefault();
                 var userInput = $('#userInput').val();
@@ -61,40 +60,39 @@ $(document).ready(function () {
                     // var sadness = Math.round(tones.fear * 100);
 
                         if (round == 1) {
+
                             $('#r1').append(userInput);
                             $('#r1').append("<br>");
                             $('#r1').append("Anger Score: " + anger + "%");
-                            
+
                             score = anger;
                         } else if (round == 2) {
-                          //  $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
+                          
                             $('#r2').append(userInput);
                             $('#r2').append("<br>");
                             $('#r2').append("Anger Score: " + anger + "%");
 
                             score = score + anger;
                         } else if (round == 3) {
-                           // $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
+                          
                             $('#r3').append(userInput);
                             $('#r3').append("<br>");
                             $('#r3').append("Anger Score: " + anger + "%");
 
                             score = score + anger;
                         } else if (round == 4) {
-                           // $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
+                           
                             $('#r4').append(userInput);
                             $('#r4').append("<br>");
                             $('#r4').append("Anger Score: " + anger + "%");
                             score = score + anger;
                         } else if (round == 5) {
-                          //  $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
+                          
                             $('#r5').append(userInput);
                             $('#r5').append("<br>");
                             $('#r5').append("Anger Score: " + anger + "%");
 
                             score = score + anger;
-                        } else {
-                            alert("GAME OVER");
                         }
                         round++;
                         drawChart();
@@ -130,11 +128,11 @@ $(document).ready(function () {
         ]);
 
         var options = {
-            min: 0, max: 400,
+            min: 0, max: 500,
             width: 400, height: 200,
-            redFrom: 350, redTo: 400,
-            yellowFrom: 200, yellowTo: 350,
-            greenFrom: 0, greenTo:200, 
+            redFrom: 400, redTo: 500,
+            yellowFrom: 250, yellowTo: 399,
+            greenFrom: 0, greenTo:249, 
             minorTicks: 10
         };
 
