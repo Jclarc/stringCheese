@@ -58,6 +58,10 @@ hr {
     color: white;
 }
 
+#highScores {
+    text-align: left;
+}
+
 #name-box,
 .game-area {
     text-align: center;

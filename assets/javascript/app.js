@@ -178,7 +178,7 @@ $(document).ready(function () {
 });
 
 
-  database.ref().on("child_added", function(childSnapshot, prevChildKey){
+  database.ref().orderByChild("score").on("child_added", function(childSnapshot, prevChildKey){
 
 
 
@@ -192,7 +192,7 @@ $(document).ready(function () {
                               
                                 // Prettify the employee start
                                 var newDatePretty = moment(newDate).format("MM/DD/YY");
-                                // Calculate the months worked using hardcore math
+                              // Calculate the months worked using hardcore math
                                 // To calculate the months worked
                                
 
