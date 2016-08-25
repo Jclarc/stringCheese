@@ -33,6 +33,10 @@ p {
     color: #000;
 }
 
+.italics {
+    font-style: italic;
+}
+
 hr {
     max-width: 400px;
     border-color: #999999;
@@ -54,6 +58,10 @@ hr {
     color: white;
 }
 
+#highScores {
+    text-align: left;
+}
+
 #name-box,
 .game-area {
     text-align: center;
@@ -66,6 +74,14 @@ hr {
     text-transform: uppercase;
     font-weight: 900;
     letter-spacing: 2px;
+}
+
+#poem {
+        font-family: 'Permanent Marker', cursive;
+    }
+
+#text-right {
+    text-align: right;
 }
 
 .navbar-nav {
