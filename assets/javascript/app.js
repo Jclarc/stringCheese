@@ -1,7 +1,19 @@
+
+var config = {
+    apiKey: "AIzaSyA4h2hleSZ5_-ydKxZ-w-_G22mr4JaE3Is",
+    authDomain: "string-cheese.firebaseapp.com",
+    databaseURL: "https://string-cheese.firebaseio.com",
+    storageBucket: "string-cheese.appspot.com",
+  };
+  firebase.initializeApp(config);
+
+  var database = firebase.database()
+
 var audioElement = document.createElement('audio');
 $(".scores").hide(".scores");
     $("#win").hide("#win");
     $("#lose").hide("#lose");
+    $("#recentUsers").hide("#recentUsers");
 
 
 $(document).ready(function () {
@@ -26,7 +38,7 @@ $(document).ready(function () {
             $(".address-bar").hide('.address-bar');
             $(".player-form").hide('.player-form');
             $(".game-area").css("text-align",
-                "center", "width", "500px").html("<div class = 'italics'>Directions: You have 5 chances to get a collective score above 400 to win this fucking thing. So type something hilariously terrible and hit submit.</div><form class='arena'><textarea class='form-control'id='userInput' rows='3' maxlength='160' placeholder='Go for the gold Frodo Douchebaggins.'></textarea><input class='btn btn-default' type='submit' value='Submit' id='submit2'></form>");
+                "center", "width", "500px").html("<div class = 'italics'>Directions: You have 5 chances to get a collective score above 400 to win this thing. So type something hilariously terrible and hit submit.</div><form class='arena'><textarea class='form-control'id='userInput' rows='3' maxlength='160' placeholder='Go for the gold Frodo Douchebaggins.'></textarea><input class='btn btn-default' type='submit' value='Submit' id='submit2'></form>");
 
             var round=1;
             $(".scores").show(".scores");
@@ -95,9 +107,26 @@ $(document).ready(function () {
                             $(".scores").empty();
                             $(".scores").html("TOTAL SCORE: " + score);
 
+
+
+
+                        
+
+                            database.ref().push({
+
+                                name: name,
+                                score: score,
+                                date: firebase.database.ServerValue.TIMESTAMP
+
+
+                            });
+
+
+                          
                                 if (score > 400) {
 
                                     $("#win").show("#win").append('<input class="btn btn-default reset" type="reset"  value="Reset"><br><Br></input><img src="./assets/images/winning.jpg"</img>')
+
 
 
 
@@ -144,8 +173,34 @@ $(document).ready(function () {
         var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
 
         chart.draw(data, options);
+}
+
+});
 
 
-    }
-})
-/*---------------------------------END OF USERINPUT SUBMIT BUTTON ON CLICK FUNC------------------------*/
+  database.ref().on("child_added", function(childSnapshot, prevChildKey){
+
+
+
+                                // Store everything into a variable.
+                                var newName = childSnapshot.val().name;
+                                var newScore = childSnapshot.val().score;
+                                var newDate = childSnapshot.val().date;
+                                
+
+                                // Employee Info
+                              
+                                // Prettify the employee start
+                                var newDatePretty = moment(newDate).format("MM/DD/YY");
+                                // Calculate the months worked using hardcore math
+                                // To calculate the months worked
+                               
+
+                                // Calculate the total billed rate
+                               
+
+                                // Add each train's data into the table
+                                $("#highScores > tbody").append("<tr><td>" + newName + "</td><td>" + newScore + "</td><td>" + newDatePretty + "</td><tr>");
+                            });
+
+
