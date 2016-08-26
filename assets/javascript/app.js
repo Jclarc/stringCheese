@@ -105,7 +105,7 @@ $(document).ready(function () {
 
                             $(".game-area").hide(".game-area");
                             $(".scores").empty();
-                            $(".scores").html("TOTAL SCORE: " + score);
+                   //         $(".scores").html("TOTAL SCORE: " + score);
 
 
 
@@ -113,9 +113,8 @@ $(document).ready(function () {
                         
 
                             database.ref().push({
-
-                                name: name,
                                 score: score,
+                                name: name,
                                 date: firebase.database.ServerValue.TIMESTAMP
 
 
@@ -178,29 +177,15 @@ $(document).ready(function () {
 });
 
 
-  database.ref().orderByChild("score").on("child_added", function(childSnapshot, prevChildKey){
-
-
-
+  database.ref().orderByChild("score").startAt(0).endAt(500).on("child_added", function(childSnapshot){
                                 // Store everything into a variable.
                                 var newName = childSnapshot.val().name;
                                 var newScore = childSnapshot.val().score;
                                 var newDate = childSnapshot.val().date;
-                                
 
-                                // Employee Info
-                              
-                                // Prettify the employee start
                                 var newDatePretty = moment(newDate).format("MM/DD/YY");
-                              // Calculate the months worked using hardcore math
-                                // To calculate the months worked
-                               
 
-                                // Calculate the total billed rate
-                               
-
-                                // Add each train's data into the table
-                                $("#highScores > tbody").append("<tr><td>" + newName + "</td><td>" + newScore + "</td><td>" + newDatePretty + "</td><tr>");
+                                $("#highScores > tbody").prepend("<tr><td>" + newName + "</td><td>" + newScore + "</td><td>" + newDatePretty + "</td><tr>");
                             });
 
 
