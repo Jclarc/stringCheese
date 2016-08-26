@@ -36,6 +36,7 @@ $(document).ready(function () {
             $(".address-bar").hide('.address-bar');
             $(".player-form").hide('.player-form');
             $(".nav").hide(".nav");
+            $(".game-area2").hide(".game-area2");
             $(".game-area").css("text-align",
                 "center", "width", "500px").html("<div class = 'italics'>Directions: You have 5 chances to get a collective score above 400 to win this thing. So type something hilariously terrible and hit submit.</div><form class='arena'><textarea class='form-control'id='userInput' rows='3' maxlength='160' placeholder='Go for the gold Frodo Douchebaggins.'></textarea><input class='btn btn-default' type='submit' value='Submit' id='submit2'></form>");
 
@@ -117,7 +118,7 @@ $(document).ready(function () {
             });/*----------------------------------------------------------------------------------End Watson Ajax call---------------------*/
 
         } else {
-            $(".game-area").html("Type your name, dipshit.");
+            $(".game-area2").html("Type your name, dipshit.");
         }
     });
 
