@@ -4,31 +4,25 @@ var config = {
     authDomain: "string-cheese.firebaseapp.com",
     databaseURL: "https://string-cheese.firebaseio.com",
     storageBucket: "string-cheese.appspot.com",
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
+
 var database = firebase.database()
-var database = firebase.database()
+
 var audioElement = document.createElement('audio');
+
 $(".scores").hide(".scores");
-    $("#win").hide("#win");
-    $("#lose").hide("#lose");
-    $("#recentUsers").hide("#recentUsers");
-$(document).ready(function () {
+$("#win").hide("#win");
+$("#lose").hide("#lose");
+$("#recentUsers").hide("#recentUsers");
 
-    
-    var name = "";
-    var score = 0
-
-
-    window.onload = function () {
-//Rocky music on startup
 $(document).ready(function () {
 
     var name = "";
     var score = 0
 
     window.onload = function () {
-    //Rocky music on startup
+        //Rocky music on startup
         audioElement.setAttribute('src', './assets/images/Rocky_Theme_Song.mp3');
         audioElement.play();
     };
@@ -67,80 +61,71 @@ $(document).ready(function () {
 
                     var tones = {//object
                         "anger": response.document_tone.tone_categories[0].tones[0].score,
-                       
+
                     };
                     //sets up usable variables for each tone element already formated to percentages
                     var anger = Math.round(tones.anger * 100);
-                        if (round == 1) {
-                            $('#r1').append(userInput);
-                            $('#r1').append("<br>");
-                            $('#r1').append("Anger Score: " + anger + "%");
-                            
-                            score = anger;
-                        } else if (round == 2) {
-                          //  $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
-                            $('#r2').append(userInput);
-                            $('#r2').append("<br>");
-                            $('#r2').append("Anger Score: " + anger + "%");
 
-                            score = score + anger;
-                        } else if (round == 3) {
-                           // $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
-                            $('#r3').append(userInput);
-                            $('#r3').append("<br>");
-                            $('#r3').append("Anger Score: " + anger + "%");
+                    if (round == 1) {
+                        $('#r1').append(userInput);
+                        $('#r1').append("<br>");
+                        $('#r1').append("Anger Score: " + anger + "%");
 
-                            score = score + anger;
-                        } else if (round == 4) {
-                           // $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
-                            $('#r4').append(userInput);
-                            $('#r4').append("<br>");
-                            $('#r4').append("Anger Score: " + anger + "%");
-                            score = score + anger;
-                        } else if (round == 5) {
-                          //  $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
-                            $('#r5').append(userInput);
-                            $('#r5').append("<br>");
-                            $('#r5').append("Anger Score: " + anger + "%");
+                        score = anger;
+                    } else if (round == 2) {
+                        //  $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
+                        $('#r2').append(userInput);
+                        $('#r2').append("<br>");
+                        $('#r2').append("Anger Score: " + anger + "%");
 
-                            score = score + anger;
+                        score = score + anger;
+                    } else if (round == 3) {
+                        // $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
+                        $('#r3').append(userInput);
+                        $('#r3').append("<br>");
+                        $('#r3').append("Anger Score: " + anger + "%");
 
-                            $(".game-area").hide(".game-area");
-                            $(".scores").empty();
+                        score = score + anger;
+                    } else if (round == 4) {
+                        // $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
+                        $('#r4').append(userInput);
+                        $('#r4').append("<br>");
+                        $('#r4').append("Anger Score: " + anger + "%");
+                        score = score + anger;
+                    } else if (round == 5) {
+                        //  $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
+                        $('#r5').append(userInput);
+                        $('#r5').append("<br>");
+                        $('#r5').append("Anger Score: " + anger + "%");
 
-                            database.ref().push({
-                                score: score,
-                                name: name,
-                                date: firebase.database.ServerValue.TIMESTAMP
+                        score = score + anger;
 
+                        $(".game-area").hide(".game-area");
+                        $(".scores").empty();
+                        $(".scores").html("TOTAL SCORE: " + score);
 
-                            });
-                $(".scores").html("TOTAL SCORE: " + score);
-                  
-                            database.ref().push({
+                        database.ref().push({
 
-                                name: name,
-                                score: score,
-                                date: firebase.database.ServerValue.TIMESTAMP
+                            name: name,
+                            score: score,
+                            date: firebase.database.ServerValue.TIMESTAMP
 
-                            });
-                                if (score > 400) {
-
-                                    $("#win").show("#win").append('<input class="btn btn-default reset" type="reset"  value="Reset"><br><Br></input><img src="./assets/images/winning.jpg"</img>')
-
-                                } else 
-                                    $("#lose").show("#lose").append('<input class="btn btn-default reset" type="reset"  value="Reset"><br><Br></input><img src="./assets/images/losing.png"</img>')
-                        }
-
-                        $(".reset").on("click", function(){
-                            window.location.reload();
-                        round++;
-                        drawChart();
-                });
-            })/*----------------------------------------------------------------------------------End Watson Ajax call---------------------*/
                         });
-                        round++;
-                        drawChart();
+
+                        if (score > 400) {
+
+                            $("#win").show("#win").append('<input class="btn btn-default reset" type="reset"  value="Reset"><br><Br></input><img src="./assets/images/winning.jpg"</img>')
+
+                        } else
+                            $("#lose").show("#lose").append('<input class="btn btn-default reset" type="reset"  value="Reset"><br><Br></input><img src="./assets/images/losing.png"</img>')
+                    }
+
+                    $(".reset").on("click", function(){
+                        window.location.reload();
+
+                    });
+                    round++;
+                    drawChart();
                 });
             });/*----------------------------------------------------------------------------------End Watson Ajax call---------------------*/
 
@@ -165,38 +150,25 @@ $(document).ready(function () {
             width: 400, height: 200,
             redFrom: 400, redTo: 500,
             yellowFrom: 250, yellowTo: 399,
-            greenFrom: 0, greenTo:249, 
+            greenFrom: 0, greenTo:249,
             minorTicks: 10
         };
 
         var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
 
         chart.draw(data, options);
-}
+    }
 
 });
-  database.ref().orderByChild("score").startAt(0).endAt(500).on("child_added", function(childSnapshot){
-                                // Store everything into a variable.
-                                var newName = childSnapshot.val().name;
-                                var newScore = childSnapshot.val().score;
-                                var newDate = childSnapshot.val().date;
 
-                                var newDatePretty = moment(newDate).format("MM/DD/YY");
-
-                                $("#highScores > tbody").prepend("<tr><td>" + newName + "</td><td>" + newScore + "</td><td>" + newDatePretty + "</td><tr>");
-                            });
-
-    }
-})
-database.ref().orderByChild("score").on("child_added", function(childSnapshot, prevChildKey) {
+database.ref().orderByChild("score").startAt(0).endAt(500).on("child_added", function(childSnapshot){
     // Store everything into a variable.
     var newName = childSnapshot.val().name;
     var newScore = childSnapshot.val().score;
     var newDate = childSnapshot.val().date;
+
     var newDatePretty = moment(newDate).format("MM/DD/YY");
-    $("#highScores > tbody").append("<tr><td>" + newName + "</td><td>" + newScore + "</td><td>" + newDatePretty + "</td><tr>");
 
+    $("#highScores > tbody").prepend("<tr><td>" + newName + "</td><td>" + newScore + "</td><td>" + newDatePretty + "</td><tr>");
 });
-
-
 

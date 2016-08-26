@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -14,50 +15,58 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
 </head>
+
 <body>
+
 <ul class="nav nav-tabs">
-   <li role="presentation" class="active"><a href="index.html">Start Game</a></li>
-  <li role="presentation"><a href="scores.html">High Scores</a></li>
-  <li role="about"><a href="about.html">About</a></li>
+    <li role="presentation" class="active"><a href="index.html">Start Game</a></li>
+    <li role="presentation"><a href="scores.html">High Scores</a></li>
+    <li role="about"><a href="about.html">About</a></li>
 </ul>
+
 <div class="brand">Doucheinator 5000</div>
 <div class="address-bar">The time has come to determine who has reigned in their skills as bag of the douche.</div>
+
 <div class="game-area"></div>
 <div class="scores">
-<div id="chart_div" style="width: 400px; height: 250px;"><br><Br></div>
- <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Round 1 </th>
-                    <th>Round 2 </th>
-                    <th>Round 3 </th>
-                    <th>Round 4 </th>
-                    <th>Round 5</th>
-                  
 
-             </thead>
-                <tr>
-                    <td id="r1"></td>
-                    <td id="r2"></td>
-                    <td id="r3"></td>
-                    <td id="r4"></td>
-                    <th id="r5"></td>
+    <div id="chart_div" style="width: 400px; height: 250px;"><br><Br></div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Round 1 </th>
+            <th>Round 2 </th>
+            <th>Round 3 </th>
+            <th>Round 4 </th>
+            <th>Round 5</th>
+        </tr>
+        </thead>
+        <tr>
+            <td id="r1"></td>
+            <td id="r2"></td>
+            <td id="r3"></td>
+            <td id="r4"></td>
+            <th id="r5"></td>
+        </tr>
+    </table>
 
-</table>
 </div>
-<form class="player-form">
-</table>
-</div>
+
 <form class="player-form">
     <input type="text"  class="form-control" placeholder="ENTER YOUR NAME TO BEGIN" id="name-box" maxlength="20" required>
     <input class="btn btn-default" type="submit" id="submit" value="Submit">
 </form>
+
 <div id="win"></div>
 <div id="lose"></div>
 </div>
+
 <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+
 <script src="assets/javascript/app.js"></script>
-<script src="assets/javascript/app.js"></script>
+
 </body>
+
 </html>
