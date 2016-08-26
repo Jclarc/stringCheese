@@ -58,33 +58,28 @@ $(document).ready(function () {
                 };//Watson API Initialize (settings)
 
                 $.ajax(settings).done(function (response) {//---------------------------------------------------Ajax setup for watson api-----------------------------------
-
                     var tones = {//object
                         "anger": response.document_tone.tone_categories[0].tones[0].score,
 
                     };
                     //sets up usable variables for each tone element already formated to percentages
                     var anger = Math.round(tones.anger * 100);
-
                     if (round == 1) {
                         $('#r1').append(userInput);
                         $('#r1').append("<br>");
                         $('#r1').append("Anger Score: " + anger + "%");
-
                         score = anger;
                     } else if (round == 2) {
                         //  $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
                         $('#r2').append(userInput);
                         $('#r2').append("<br>");
                         $('#r2').append("Anger Score: " + anger + "%");
-
                         score = score + anger;
                     } else if (round == 3) {
                         // $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
                         $('#r3').append(userInput);
                         $('#r3').append("<br>");
                         $('#r3').append("Anger Score: " + anger + "%");
-
                         score = score + anger;
                     } else if (round == 4) {
                         // $(".game-area").prepend("Your writing prompt is: " + prompts[round-1]);
@@ -97,32 +92,23 @@ $(document).ready(function () {
                         $('#r5').append(userInput);
                         $('#r5').append("<br>");
                         $('#r5').append("Anger Score: " + anger + "%");
-
                         score = score + anger;
-
                         $(".game-area").hide(".game-area");
                         $(".scores").empty();
-                        $(".scores").html("TOTAL SCORE: " + score);
-
+                   //     $(".scores").html("TOTAL SCORE: " + score);
                         database.ref().push({
-
                             name: name,
                             score: score,
                             date: firebase.database.ServerValue.TIMESTAMP
-
                         });
 
                         if (score > 400) {
-
                             $("#win").show("#win").append('<input class="btn btn-default reset" type="reset"  value="Reset"><br><Br></input><img src="./assets/images/winning.jpg"</img>')
-
                         } else
                             $("#lose").show("#lose").append('<input class="btn btn-default reset" type="reset"  value="Reset"><br><Br></input><img src="./assets/images/losing.png"</img>')
                     }
-
                     $(".reset").on("click", function(){
                         window.location.reload();
-
                     });
                     round++;
                     drawChart();
@@ -139,12 +125,10 @@ $(document).ready(function () {
     google.charts.load('current', {'packages': ['gauge']});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
-
         var data = google.visualization.arrayToDataTable([
             ['Label', 'Value'],
             ['Douche-o-meter', score],
         ]);
-
         var options = {
             min: 0, max: 500,
             width: 400, height: 200,
@@ -153,9 +137,7 @@ $(document).ready(function () {
             greenFrom: 0, greenTo:249,
             minorTicks: 10
         };
-
         var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
-
         chart.draw(data, options);
     }
 
@@ -166,9 +148,6 @@ database.ref().orderByChild("score").startAt(0).endAt(500).on("child_added", fun
     var newName = childSnapshot.val().name;
     var newScore = childSnapshot.val().score;
     var newDate = childSnapshot.val().date;
-
     var newDatePretty = moment(newDate).format("MM/DD/YY");
-
     $("#highScores > tbody").prepend("<tr><td>" + newName + "</td><td>" + newScore + "</td><td>" + newDatePretty + "</td><tr>");
 });
-
