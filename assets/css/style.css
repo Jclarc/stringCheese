@@ -44,7 +44,7 @@ hr {
 
 #chart_div {
     text-align: center;
-    margin-left: 40%;
+    margin-left: 43%;
     
 }
 
@@ -54,7 +54,6 @@ hr {
     display: none;
     background-color: black;
     width: 100%;
-    margin-bottom: 0px;
     color: white;
 }
 
@@ -65,9 +64,13 @@ hr {
 #name-box,
 .game-area {
     text-align: center;
-    margin-bottom: 50px;
 
 
+
+}
+
+#whitefont {
+    color: white;
 }
 
 .navbar-brand {
@@ -78,6 +81,7 @@ hr {
 
 #poem {
         font-family: 'Permanent Marker', cursive;
+        color: white;
     }
 
 #text-right {

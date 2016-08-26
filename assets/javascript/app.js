@@ -35,6 +35,7 @@ $(document).ready(function () {
             audioElement.pause();
             $(".address-bar").hide('.address-bar');
             $(".player-form").hide('.player-form');
+            $(".nav").hide(".nav");
             $(".game-area").css("text-align",
                 "center", "width", "500px").html("<div class = 'italics'>Directions: You have 5 chances to get a collective score above 400 to win this thing. So type something hilariously terrible and hit submit.</div><form class='arena'><textarea class='form-control'id='userInput' rows='3' maxlength='160' placeholder='Go for the gold Frodo Douchebaggins.'></textarea><input class='btn btn-default' type='submit' value='Submit' id='submit2'></form>");
 
@@ -99,7 +100,7 @@ $(document).ready(function () {
                         database.ref().push({
                             name: name,
                             score: score,
-                            date: firebase.database.ServerValue.TIMESTAMP
+                            date: moment().format('L')
                         });
 
                         if (score > 400) {
@@ -131,7 +132,7 @@ $(document).ready(function () {
         ]);
         var options = {
             min: 0, max: 500,
-            width: 400, height: 200,
+            width: 500, height: 200,
             redFrom: 400, redTo: 500,
             yellowFrom: 250, yellowTo: 399,
             greenFrom: 0, greenTo:249,
