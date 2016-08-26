@@ -7,24 +7,22 @@ var config = {
   };
   firebase.initializeApp(config);
 
-  var database = firebase.database()
+var database = firebase.database()
 
 var audioElement = document.createElement('audio');
+
 $(".scores").hide(".scores");
     $("#win").hide("#win");
     $("#lose").hide("#lose");
     $("#recentUsers").hide("#recentUsers");
 
-
 $(document).ready(function () {
 
-    
     var name = "";
     var score = 0
 
-
     window.onload = function () {
-//Rocky music on startup
+    //Rocky music on startup
         audioElement.setAttribute('src', './assets/images/Rocky_Theme_Song.mp3');
         audioElement.play();
     };
@@ -68,7 +66,6 @@ $(document).ready(function () {
                     //sets up usable variables for each tone element already formated to percentages
                     var anger = Math.round(tones.anger * 100);
                   
-
                         if (round == 1) {
                             $('#r1').append(userInput);
                             $('#r1').append("<br>");
@@ -106,29 +103,18 @@ $(document).ready(function () {
                             $(".game-area").hide(".game-area");
                             $(".scores").empty();
                             $(".scores").html("TOTAL SCORE: " + score);
-
-
-
-
-                        
-
+                  
                             database.ref().push({
 
                                 name: name,
                                 score: score,
                                 date: firebase.database.ServerValue.TIMESTAMP
 
-
                             });
-
-
                           
                                 if (score > 400) {
 
                                     $("#win").show("#win").append('<input class="btn btn-default reset" type="reset"  value="Reset"><br><Br></input><img src="./assets/images/winning.jpg"</img>')
-
-
-
 
                                 } else 
                                     $("#lose").show("#lose").append('<input class="btn btn-default reset" type="reset"  value="Reset"><br><Br></input><img src="./assets/images/losing.png"</img>')
@@ -136,19 +122,17 @@ $(document).ready(function () {
 
                         $(".reset").on("click", function(){
                             window.location.reload();
-})
+                            
+                        });
                         round++;
                         drawChart();
                 });
-            })/*----------------------------------------------------------------------------------End Watson Ajax call---------------------*/
+            });/*----------------------------------------------------------------------------------End Watson Ajax call---------------------*/
 
         } else {
             $(".game-area").html("Type your name, dipshit.");
         }
     });
-
-
-
 
     /*----------------------------------------------------------------END OF CLICK FUNCTION ---------------------------------------------------------------------*/
 // gauge code
@@ -173,34 +157,20 @@ $(document).ready(function () {
         var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
 
         chart.draw(data, options);
-}
+    }
 
 });
 
+database.ref().orderByChild("score").on("child_added", function(childSnapshot, prevChildKey) {
+    // Store everything into a variable.
+    var newName = childSnapshot.val().name;
+    var newScore = childSnapshot.val().score;
+    var newDate = childSnapshot.val().date;
+    
+    var newDatePretty = moment(newDate).format("MM/DD/YY");
+  
+    $("#highScores > tbody").append("<tr><td>" + newName + "</td><td>" + newScore + "</td><td>" + newDatePretty + "</td><tr>");
 
-  database.ref().orderByChild("score").on("child_added", function(childSnapshot, prevChildKey){
-
-
-
-                                // Store everything into a variable.
-                                var newName = childSnapshot.val().name;
-                                var newScore = childSnapshot.val().score;
-                                var newDate = childSnapshot.val().date;
-                                
-
-                                // Employee Info
-                              
-                                // Prettify the employee start
-                                var newDatePretty = moment(newDate).format("MM/DD/YY");
-                              // Calculate the months worked using hardcore math
-                                // To calculate the months worked
-                               
-
-                                // Calculate the total billed rate
-                               
-
-                                // Add each train's data into the table
-                                $("#highScores > tbody").append("<tr><td>" + newName + "</td><td>" + newScore + "</td><td>" + newDatePretty + "</td><tr>");
-                            });
+});
 
 
