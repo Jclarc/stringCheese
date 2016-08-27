@@ -105,9 +105,11 @@ $(document).ready(function () {
                         });
 
                         if (score > 400) {
-                            $("#win").show("#win").append('<input class="btn btn-default reset" type="reset"  value="Reset"><br><Br></input><img src="./assets/images/winning.jpg"</img>')
+                            $(".win").show(".win").append('<img src="./assets/images/winning.jpg"</img>')
+                            $(".address-bar").show('.address-bar').html('<p>FINAL SCORE: '+ score + '</p><br>').css('background-color', 'white').append('<input class="btn btn-default reset" type="reset"  value="Reset">></input>');
                         } else
-                            $("#lose").show("#lose").append('<input class="btn btn-default reset" type="reset"  value="Reset"><br><Br></input><img src="./assets/images/losing.png"</img>')
+                            $(".lose").show(".lose").append('<img src="./assets/images/losing.png"</img>')
+                            $(".address-bar").show('.address-bar').html('<p>FINAL SCORE: '+ score + '</p><br>').css('background-color', 'white').append('<input class="btn btn-default reset" type="reset"  value="Reset"></input>');
                     }
                     $(".reset").on("click", function(){
                         window.location.reload();
