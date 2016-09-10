@@ -19,9 +19,9 @@ First group project developed in CodeCamp. The app is an interactive player chat
 - IBM's Watson Tone Analyzer api
 
 # Authors
-Jacob Clark
-Andrew Beckett
-Keely Lumbra
+- Jacob Clark
+- Andrew Beckett
+- Keely Lumbra
 
 
 
